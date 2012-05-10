@@ -1,0 +1,39 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ATPFileDB", "ATPFileDB\ATPFileDB\ATPFileDB.vcxproj", "{B4E28569-1FD9-458B-BD9C-65BA2DBFB412}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ATPManager", "ATP远程管理服务器\ATPManager.vcxproj", "{9EA3EBA4-AFCD-41C8-9FEB-BC8284611732}"
+	ProjectSection(ProjectDependencies) = postProject
+		{B4E28569-1FD9-458B-BD9C-65BA2DBFB412} = {B4E28569-1FD9-458B-BD9C-65BA2DBFB412}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Debug|x64 = Debug|x64
+		Release|Win32 = Release|Win32
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B4E28569-1FD9-458B-BD9C-65BA2DBFB412}.Debug|Win32.ActiveCfg = Debug|Win32
+		{B4E28569-1FD9-458B-BD9C-65BA2DBFB412}.Debug|Win32.Build.0 = Debug|Win32
+		{B4E28569-1FD9-458B-BD9C-65BA2DBFB412}.Debug|x64.ActiveCfg = Debug|x64
+		{B4E28569-1FD9-458B-BD9C-65BA2DBFB412}.Debug|x64.Build.0 = Debug|x64
+		{B4E28569-1FD9-458B-BD9C-65BA2DBFB412}.Release|Win32.ActiveCfg = Release|Win32
+		{B4E28569-1FD9-458B-BD9C-65BA2DBFB412}.Release|Win32.Build.0 = Release|Win32
+		{B4E28569-1FD9-458B-BD9C-65BA2DBFB412}.Release|x64.ActiveCfg = Release|x64
+		{B4E28569-1FD9-458B-BD9C-65BA2DBFB412}.Release|x64.Build.0 = Release|x64
+		{9EA3EBA4-AFCD-41C8-9FEB-BC8284611732}.Debug|Win32.ActiveCfg = Debug|x64
+		{9EA3EBA4-AFCD-41C8-9FEB-BC8284611732}.Debug|Win32.Build.0 = Debug|x64
+		{9EA3EBA4-AFCD-41C8-9FEB-BC8284611732}.Debug|x64.ActiveCfg = Debug|x64
+		{9EA3EBA4-AFCD-41C8-9FEB-BC8284611732}.Debug|x64.Build.0 = Debug|x64
+		{9EA3EBA4-AFCD-41C8-9FEB-BC8284611732}.Release|Win32.ActiveCfg = Release|Win32
+		{9EA3EBA4-AFCD-41C8-9FEB-BC8284611732}.Release|Win32.Build.0 = Release|Win32
+		{9EA3EBA4-AFCD-41C8-9FEB-BC8284611732}.Release|x64.ActiveCfg = Release|x64
+		{9EA3EBA4-AFCD-41C8-9FEB-BC8284611732}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

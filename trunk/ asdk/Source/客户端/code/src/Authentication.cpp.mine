@@ -1,0 +1,61 @@
+#include "StdAfx.h"
+#include "Authentication.h"
+#include "Common\Log.h"
+#include "Connenct\ProxyOption.h"
+#include "Connenct\ShortSocket.h"
+#include "Connenct\DataComm.h"
+#include "Common\CommonFunc.h"
+
+
+CAuthentication::CAuthentication(void)
+{
+}
+
+CAuthentication::~CAuthentication(void)
+{
+}
+
+DWORD CAuthentication::Login( const CServer authsvr,const CString& strAccount,const CString& strPwd )
+{
+	if (authsvr.m_strIPAddress.IsEmpty()||
+		strAccount.IsEmpty()||
+		strPwd.IsEmpty())
+	{
+		g_Log.LOG_WARNING(L"auth param error");
+		return RETVAL_ERROR;
+	}
+
+	g_Log.LOG_INFO(L"begin connect to server ip:%s,port:%d",authsvr.m_strIPAddress,authsvr.m_dwPort);
+
+
+	CProxyOption ProxyOption;
+	CShortSocket Socket;
+	CDataComm DataComm;
+
+	ProxyOption.Init(GetProxyFile());
+
+	char acReq[1024];
+	int nLen = DataComm.MakeOnlineInitReq(acReq,0x0018);
+	char* pRecv = (char *)malloc(1024 * 1024);
+	memset(pRecv,1024*1024,0);
+
+	CStringA strIp(authsvr.m_strIPAddress);
+	DWORD nRet = Socket.SendAndRecv(strIp.GetBuffer(0),authsvr.m_dwPort,acReq,nLen,pRecv,1024 * 1024,NULL,&ProxyOption);
+
+	if (nRet > 0)
+	{
+		DataComm.DealData(pRecv,nRet);
+	}
+
+	 	
+
+
+
+
+	return RETVAL_SUCCESS;
+}
+
+DWORD CAuthentication::Logout( void )
+{
+	return RETVAL_SUCCESS;
+}

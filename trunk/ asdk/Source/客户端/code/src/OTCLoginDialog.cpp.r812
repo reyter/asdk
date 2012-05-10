@@ -1,0 +1,177 @@
+// OTCLoginDialog.cpp : 实现文件
+//
+
+#include "stdafx.h"
+#include "Resource.h"
+#include "OTCHK_Client.h"
+#include "OTCLoginDialog.h"
+#include "CommonData.h"
+#include "Connenct\DataComm.h"
+#include "Common\CommonFunc.h"
+#include "Common\GlobalMacro.h"
+#include "Connenct\ShortSocket.h"
+#include "Connenct\CommSocket.h"
+#include "Connenct\SocketFactory.h"
+
+#include <vector>
+#include <afxsock.h>
+#include "AppSetting.h"
+#include "Connenct\ServerMg.h"
+
+// COTCLoginDialog 对话框
+
+IMPLEMENT_DYNAMIC(COTCLoginDialog, CDialog)
+
+COTCLoginDialog::COTCLoginDialog(CWnd* pParent /*=NULL*/)
+	: CDialog(COTCLoginDialog::IDD, pParent)
+{
+	InitEnv();
+}
+
+COTCLoginDialog::~COTCLoginDialog()
+{
+	UnInitEnv();
+}
+
+void COTCLoginDialog::DoDataExchange(CDataExchange* pDX)
+{
+	CDialog::DoDataExchange(pDX);
+	DDX_Control(pDX, IDC_COMBO_SERVER, m_CombServerList);
+	DDX_Control(pDX, IDC_EDIT_CUSTOMERID, m_editAccount);
+	DDX_Control(pDX, IDC_EDIT_LOGIN_PWD, m_editLoginPwd);
+	DDX_Control(pDX, IDC_CHECK_SAVE_ACCOUNT, m_checkSaveAccount);
+	DDX_Control(pDX, IDC_CHECK_SAVE_PASSWORD, m_checkSavePassword);
+}
+
+
+BEGIN_MESSAGE_MAP(COTCLoginDialog, CDialog)
+	ON_BN_CLICKED(IDC_BUTTON_APPSETTING, &COTCLoginDialog::OnBnClickedButtonAppsetting)
+	ON_BN_CLICKED(IDC_BUTTON_LOGIN, &COTCLoginDialog::OnBnClickedButtonLogin)
+	ON_BN_CLICKED(IDC_BUTTON_LOGIN_CANCEL, &COTCLoginDialog::OnBnClickedButtonLoginCancel)
+END_MESSAGE_MAP()
+
+
+// COTCLoginDialog 消息处理程序
+
+BOOL COTCLoginDialog::OnInitDialog()
+{
+	CDialog::OnInitDialog();
+
+	// TODO:  在此添加额外的初始化
+
+	LoadMultiLanguage();
+
+	m_editAccount.LimitText(USERNAME_MAXLENGTH);
+
+	
+	//添加服务器列表
+	m_CombServerList.Clear();
+	std::vector<CServerGroup>::iterator iter, itend;
+	std::vector<CServerGroup>& vtServerGroups = CSocketFactory::GetInstance().GetServerGroup();
+	for (iter = vtServerGroups.begin(); iter != vtServerGroups.end();iter++)
+	{
+		m_CombServerList.AddString(iter->m_strGroupName);
+	}
+	m_CombServerList.SetCurSel(0);
+
+	CAppSetting AppSetting;
+	AppSetting.LoadXMLConfig();
+	CServer fixedSvr = AppSetting.GetFixedServer();
+
+	//是否记住账号
+	m_checkSaveAccount.SetCheck(AppSetting.IsSaveAccount());
+
+	//是否保存密码
+	m_checkSavePassword.SetCheck(AppSetting.IsSavePassword());
+
+	//设置账号
+	m_editAccount.SetWindowText(AppSetting.GetAccount());
+
+	//设置密码
+	theApp.m_Authentication.Login(fixedSvr,_T("1002"),_T("888888"));
+	
+
+	//获取最新服务器端信息
+
+// 	CAppSetting AppSetting;
+// 	CServer FixedSvr;
+// 	CProxyOption ProxyOption;
+// 	CShortSocket Socket;
+// 	CDataComm DataComm;
+// 
+// 	AppSetting.GetFixedServer(FixedSvr);
+// 	ProxyOption.Init(GetProxyFile());
+// 
+// 	char acReq[1024];
+// 	int nLen = DataComm.MakeOnlineInitReq(acReq,0x0018);
+//  
+//  	char* pRecv = (char *)malloc(1024 * 1024);
+//  	memset(pRecv,1024*1024,0);
+//  
+//  	CStringA strIp(FixedSvr.m_strIPAddress);
+//  
+//  	DWORD nRet = Socket.SendAndRecv(strIp.GetBuffer(0),FixedSvr.m_dwPort,acReq,nLen,pRecv,1024 * 1024,this->GetSafeHwnd(),&ProxyOption);
+//  
+//  	if (nRet > 0)
+//  	{
+//  		DataComm.DealData(pRecv,nRet);
+//  	}
+// 
+// 	
+
+
+	
+	return TRUE;  // return TRUE unless you set the focus to a control
+	// 异常: OCX 属性页应返回 FALSE
+}
+
+
+
+void COTCLoginDialog::LoadMultiLanguage( void )
+{
+	DLG_LOADSTRING(IDD_DIALOG_LOGIN);
+	CTRL_LOADSTRING(IDC_STATIC_SERVER_ADDRESS);
+	CTRL_LOADSTRING(IDC_STATIC_CUSTOMERID);
+	CTRL_LOADSTRING(IDC_STATIC_LOGIN_PWD);
+	CTRL_LOADSTRING(IDC_BUTTON_APPSETTING);
+	CTRL_LOADSTRING(IDC_BUTTON_LOGIN);
+	CTRL_LOADSTRING(IDC_BUTTON_LOGIN_CANCEL);
+}
+
+
+
+void COTCLoginDialog::OnBnClickedButtonAppsetting()
+{
+	// TODO: 在此添加控件通知处理程序代码
+}
+
+void COTCLoginDialog::OnBnClickedButtonLogin()
+{
+	// TODO: 在此添加控件通知处理程序代码
+	
+}
+
+void COTCLoginDialog::OnBnClickedButtonLoginCancel()
+{
+	// TODO: 在此添加控件通知处理程序代码
+}
+
+void COTCLoginDialog::OnBnClickedCheckRememberme()
+{
+	// TODO: 在此添加控件通知处理程序代码
+}
+
+void COTCLoginDialog::InitEnv( void )
+{
+	//初始化网络运行环境
+	WSADATA wsaData;
+	WSAStartup( MAKEWORD( 2, 2 ), &wsaData );
+}
+
+void COTCLoginDialog::UnInitEnv( void )
+{
+	WSACleanup();
+}
+
+
+

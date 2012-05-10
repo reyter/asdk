@@ -1,0 +1,28 @@
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CCECore", "CCECore.vcxproj", "{874A5DA5-30FE-46CF-B48B-5709779BF631}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release_海通期货|Win32 = Release_海通期货|Win32
+		Release_海通证券|Win32 = Release_海通证券|Win32
+		Release|Win32 = Release|Win32
+		Template|Win32 = Template|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{874A5DA5-30FE-46CF-B48B-5709779BF631}.Debug|Win32.ActiveCfg = Debug|Win32
+		{874A5DA5-30FE-46CF-B48B-5709779BF631}.Debug|Win32.Build.0 = Debug|Win32
+		{874A5DA5-30FE-46CF-B48B-5709779BF631}.Release_海通期货|Win32.ActiveCfg = Release_海通期货|Win32
+		{874A5DA5-30FE-46CF-B48B-5709779BF631}.Release_海通期货|Win32.Build.0 = Release_海通期货|Win32
+		{874A5DA5-30FE-46CF-B48B-5709779BF631}.Release_海通证券|Win32.ActiveCfg = Release_海通期货|Win32
+		{874A5DA5-30FE-46CF-B48B-5709779BF631}.Release_海通证券|Win32.Build.0 = Release_海通期货|Win32
+		{874A5DA5-30FE-46CF-B48B-5709779BF631}.Release|Win32.ActiveCfg = Release|Win32
+		{874A5DA5-30FE-46CF-B48B-5709779BF631}.Release|Win32.Build.0 = Release|Win32
+		{874A5DA5-30FE-46CF-B48B-5709779BF631}.Template|Win32.ActiveCfg = Release|Win32
+		{874A5DA5-30FE-46CF-B48B-5709779BF631}.Template|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

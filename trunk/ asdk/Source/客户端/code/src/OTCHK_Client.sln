@@ -1,0 +1,23 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OTCHK_Client", "OTCHK_Client.vcproj", "{894B71EA-E5D1-4BEC-A5E8-4F534F91B63C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Pre_Release|Win32 = Pre_Release|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{894B71EA-E5D1-4BEC-A5E8-4F534F91B63C}.Debug|Win32.ActiveCfg = Debug|Win32
+		{894B71EA-E5D1-4BEC-A5E8-4F534F91B63C}.Debug|Win32.Build.0 = Debug|Win32
+		{894B71EA-E5D1-4BEC-A5E8-4F534F91B63C}.Pre_Release|Win32.ActiveCfg = Pre_Release|Win32
+		{894B71EA-E5D1-4BEC-A5E8-4F534F91B63C}.Pre_Release|Win32.Build.0 = Pre_Release|Win32
+		{894B71EA-E5D1-4BEC-A5E8-4F534F91B63C}.Release|Win32.ActiveCfg = Release|Win32
+		{894B71EA-E5D1-4BEC-A5E8-4F534F91B63C}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

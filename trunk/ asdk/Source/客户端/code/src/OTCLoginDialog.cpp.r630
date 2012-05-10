@@ -1,0 +1,134 @@
+// OTCLoginDialog.cpp : 实现文件
+//
+
+#include "stdafx.h"
+#include "OTCHK_Client.h"
+#include "OTCLoginDialog.h"
+#include "CommonFunc.h"
+#include "Resource.h"
+#include "CommonData.h"
+#include "GlobalMacro.h"
+#include "ClientConfig.h"
+#include <vector>
+
+
+// COTCLoginDialog 对话框
+
+IMPLEMENT_DYNAMIC(COTCLoginDialog, CDialog)
+
+COTCLoginDialog::COTCLoginDialog(CWnd* pParent /*=NULL*/)
+	: CDialog(COTCLoginDialog::IDD, pParent)
+{
+
+}
+
+COTCLoginDialog::~COTCLoginDialog()
+{
+}
+
+void COTCLoginDialog::DoDataExchange(CDataExchange* pDX)
+{
+	CDialog::DoDataExchange(pDX);
+	DDX_Control(pDX, IDC_COMBO_SERVER, m_CombServerList);
+	DDX_Control(pDX, IDC_EDIT_CUSTOMERID, m_editCustomerID);
+	DDX_Control(pDX, IDC_EDIT_LOGIN_PWD, m_editLoginPwd);
+	DDX_Control(pDX, IDC_CHECK_REMEMBERME, m_checkRememberMe);
+}
+
+
+BEGIN_MESSAGE_MAP(COTCLoginDialog, CDialog)
+	ON_BN_CLICKED(IDC_BUTTON_APPSETTING, &COTCLoginDialog::OnBnClickedButtonAppsetting)
+	ON_BN_CLICKED(IDC_BUTTON_LOGIN, &COTCLoginDialog::OnBnClickedButtonLogin)
+	ON_BN_CLICKED(IDC_BUTTON_LOGIN_CANCEL, &COTCLoginDialog::OnBnClickedButtonLoginCancel)
+	ON_BN_CLICKED(IDC_CHECK_REMEMBERME, &COTCLoginDialog::OnBnClickedCheckRememberme)
+END_MESSAGE_MAP()
+
+
+// COTCLoginDialog 消息处理程序
+
+BOOL COTCLoginDialog::OnInitDialog()
+{
+	CDialog::OnInitDialog();
+
+	// TODO:  在此添加额外的初始化
+
+	LoadMultiLanguage();
+
+	m_editCustomerID.LimitText(USERNAME_MAXLENGTH);
+
+	//添加服务器列表
+	m_CombServerList.Clear();
+	std::vector<CServer>& vtServerInfos = theApp.m_ClientConfig.GetServerInfos();
+	std::vector<CServer>::iterator iter, itend = vtServerInfos.end();
+	for (iter = vtServerInfos.begin(); iter != vtServerInfos.end();iter++)
+	{
+		m_CombServerList.AddString(iter->m_strServerName);
+	}
+	
+	//选择默认的服务器
+	CString strDefaultServerName = theApp.m_ClientConfig.GetDefaultServerName();
+	for (size_t i = 0; i < vtServerInfos.size(); i++)
+	{
+		if (strDefaultServerName ==vtServerInfos.at(i).m_strServerName)
+		{
+			m_CombServerList.SetCurSel(i);
+		}
+	}
+
+	//判断是否记住了客户号
+	BOOL& bRememberMe = theApp.m_ClientConfig.IsRemembrMe();
+	m_checkRememberMe.SetCheck(bRememberMe);
+
+	if (bRememberMe)
+	{
+		CString strCustomerId  =  theApp.m_ClientConfig.GetCustomerId();
+		m_editCustomerID.SetWindowText(strCustomerId);
+	}
+
+	m_editCustomerID.SetFocus();
+
+	m_editLoginPwd.SetWindowText(_T(""));
+
+	
+	return TRUE;  // return TRUE unless you set the focus to a control
+	// 异常: OCX 属性页应返回 FALSE
+}
+
+
+
+void COTCLoginDialog::LoadMultiLanguage( void )
+{
+	DLG_LOADSTRING(IDD_DIALOG_LOGIN);
+	CTRL_LOADSTRING(IDC_STATIC_SERVER_ADDRESS);
+	CTRL_LOADSTRING(IDC_STATIC_CUSTOMERID);
+	CTRL_LOADSTRING(IDC_STATIC_LOGIN_PWD);
+	CTRL_LOADSTRING(IDC_CHECK_REMEMBERME);
+	CTRL_LOADSTRING(IDC_BUTTON_APPSETTING);
+	CTRL_LOADSTRING(IDC_BUTTON_LOGIN);
+	CTRL_LOADSTRING(IDC_BUTTON_LOGIN_CANCEL);
+}
+
+
+
+void COTCLoginDialog::OnBnClickedButtonAppsetting()
+{
+	// TODO: 在此添加控件通知处理程序代码
+}
+
+void COTCLoginDialog::OnBnClickedButtonLogin()
+{
+	// TODO: 在此添加控件通知处理程序代码
+	theApp.m_ClientConfig.SaveXMLConfigFile();
+}
+
+void COTCLoginDialog::OnBnClickedButtonLoginCancel()
+{
+	// TODO: 在此添加控件通知处理程序代码
+}
+
+void COTCLoginDialog::OnBnClickedCheckRememberme()
+{
+	// TODO: 在此添加控件通知处理程序代码
+}
+
+

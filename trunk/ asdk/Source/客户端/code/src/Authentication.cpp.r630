@@ -1,0 +1,10 @@
+#include "StdAfx.h"
+#include "Authentication.h"
+
+CAuthentication::CAuthentication(void)
+{
+}
+
+CAuthentication::~CAuthentication(void)
+{
+}
