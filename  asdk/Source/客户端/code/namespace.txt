@@ -1,0 +1,25 @@
+OTC::Net  
+    网络功能
+
+OTC::Control
+    封装MFC控件
+
+OTC::Utils  
+    字符串操作、注册表操作、Ini操作、文件操作、字节编码转换、日志、操作系统信息、Dump管理
+
+OTC::Crypto
+    加密解密，DES MD5
+
+OTC::Zip
+    压缩
+
+OTC::XML
+    XML操作
+
+OTC::Concurrency
+    线程安装的容器类
+     
+
+
+
+ 

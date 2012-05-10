@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ATPNetC", "ATPNetC\ATPNetC.vcxproj", "{EBC6C70E-4156-4685-9D48-BEDE70FD55F1}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ATPManageClient", "..\ATP远程管理客户端\ATPManageClient.vcxproj", "{1D818638-AC87-44DF-A6CE-2573DFEF7D1B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EBC6C70E-4156-4685-9D48-BEDE70FD55F1}.Debug|Win32.ActiveCfg = Debug|Win32
+		{EBC6C70E-4156-4685-9D48-BEDE70FD55F1}.Debug|Win32.Build.0 = Debug|Win32
+		{EBC6C70E-4156-4685-9D48-BEDE70FD55F1}.Release|Win32.ActiveCfg = Release|Win32
+		{EBC6C70E-4156-4685-9D48-BEDE70FD55F1}.Release|Win32.Build.0 = Release|Win32
+		{1D818638-AC87-44DF-A6CE-2573DFEF7D1B}.Debug|Win32.ActiveCfg = Debug|Win32
+		{1D818638-AC87-44DF-A6CE-2573DFEF7D1B}.Debug|Win32.Build.0 = Debug|Win32
+		{1D818638-AC87-44DF-A6CE-2573DFEF7D1B}.Release|Win32.ActiveCfg = Release|Win32
+		{1D818638-AC87-44DF-A6CE-2573DFEF7D1B}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
